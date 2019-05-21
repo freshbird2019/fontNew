@@ -27,7 +27,33 @@
     </el-table>
   </div>
   <div v-else-if="flag==2">
-    <img :src="img">
+    <el-row :gutter="8">
+      <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:25px;margin-bottom:30px;">
+        <div class="imgdiv"><img :src="img" class="imgname"></div>
+      </el-col>
+
+      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="float:right;margin: 100px 50px;">
+        <el-card  style="margin-left:8px;">
+          <div style="position:relative;">
+            <div style="padding-top:35px;" class="progress-item">
+              <div class="card-panel-description">
+                <div class="card-panel-text">训练时间：</div></div>
+              <el-progress :percentage="70" />
+            </div>
+            <div class="progress-item">
+              <div class="card-panel-description">
+                <div class="card-panel-text">正确率：</div></div>
+              <el-progress :percentage="18" />
+            </div>
+            <div class="progress-item">
+              <div class="card-panel-description">
+                <div class="card-panel-text">排名：</div></div>
+              <el-progress :percentage="12" />
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -36,7 +62,7 @@
   import { getToken } from '../../utils/auth'
   import PieChart from '../table/pieChart'
 export default {
-  components: { PieChart },
+  components: {  PieChart },
   moment:moment,
   data() {
     return {
@@ -109,8 +135,11 @@ export default {
           this.trainHis.push(response.data[i])
         }
         this.listLoading = false
+      }) .catch(() => {
+        this.loading = false
       })
     },
+
     toOneTrainHis(row){
       let routerParams=row.trainpic.trainpicid
       this.$http.get('http://localhost:8088/project/image/'+routerParams,
@@ -141,4 +170,36 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .imgdiv{
+    margin-top: 50px;
+    margin-left: 15px;
+    float: left;
+  }
+  .imgname{
+    border-style: dashed;
+    border-color: #cdd0d8a1;
+  }
+  .progress-item {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .card-panel-description {
+    font-weight: bold;
+    margin: 26px;
+    margin-left: 0px;
+  }
+  .card-panel-text {
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .card-panel-num {
+    font-size: 20px;
+  }
+
+</style>
 

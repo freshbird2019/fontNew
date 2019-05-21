@@ -9,9 +9,25 @@
 <script>
 export default {
   name: 'AppMain',
+  data() {
+    return {
+      isRouterAlive: true
+    }
+  },
+  provide() {
+    return {
+      reload: this.reload
+    }
+  },
   computed: {
     key() {
       return this.$route.fullPath
+    }
+  },
+  methods: {
+    reload() {
+      this.isRouterAlive = false
+      this.$nextTick(() => (this.isRouterAlive = true))
     }
   }
 }

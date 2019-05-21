@@ -104,6 +104,17 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/selfpage',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'selfpage',
+        component: () => import('@/views/selfpage/selfinfo')
+      }
+    ]
+  },
+  {
     path: '/pieChart',
     component: Layout,
     children: [
