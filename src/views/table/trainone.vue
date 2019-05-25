@@ -2,28 +2,24 @@
   <el-main style="padding:0;border:0;">
     <div class="con">
       <div
-        style="position: relative;border: 1px solid #2c3e50"
-        :style="{backgroundImage:'url('+url+')'}"
+        style="position: relative;border: 1px solid #2c3e50;"
         class="bimg"
         @click="clicktimes++"
       >
+        <!-- :style="{backgroundImage:'url('+url+')'}"-->
 
-        <ul>
-          <li>
+        <div
+          v-for="pos in poss"
+          :key="pos.value"
+          style="position: absolute;"
+          :style="'left :'+pos.minx+ 'px' +';'+ 'top :' +pos.miny+ 'px' +
+            ';' + 'width :' + pos.width + 'px'+';' + 'height :' + pos.height + 'px' +';' + 'border: '+pos.bordersize+'px solid red;'"
+          @click="clickonce(pos)"
+        />
+        <img :src="url" class="bbimg">
+        <p>{{ clicktimes }}</p>
+        <p>{{ usercount }}</p>
 
-            <div
-              v-for="pos in poss"
-              :key="pos.value"
-              style="position: absolute;"
-              :style="'left :'+pos.minx+ 'px' +';'+ 'top :' +pos.miny+ 'px' +
-                ';' + 'width :' + pos.width + 'px'+';' + 'height :' + pos.height + 'px' +';' + 'border: '+pos.bordersize+'px solid red;'"
-              @click="clickonce(pos)"
-            />
-
-            <p>{{ clicktimes }}</p>
-            <p>{{ usercount }}</p>
-          </li>
-        </ul>
       </div>
       <div id="buttons">
         <el-button type="primary" @click="showHint">提示</el-button>
@@ -136,17 +132,13 @@ export default {
   }
   li {
     display: inline-block;
-    margin: 0 10px;
   }
   a {
     color: #42b983;
   }
   .el-main>ul>li>div{
   //background-color: blue;
-    align-items:center;
-    justify-content:center;
-    height:400px;
-    width:auto;
+
   }
 
   .bimg{
@@ -170,5 +162,9 @@ export default {
     height: 600px;
     margin: 50px 350px;
 
+  }
+  .bbimg{
+    width:512px;
+    height: 512px;
   }
 </style>

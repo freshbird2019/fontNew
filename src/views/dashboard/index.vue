@@ -58,17 +58,18 @@ export default {
 }
 .container .left {
   position:relative;
-  width:75%;
+  width:60%;
+  float: left;
+  margin-left: 50px;
 }
 .container .right{
   display: inline-block;
-  top: 100px;
   border: 1px solid #e4e4e4;
-  margin-left: 20px;
-  width: 300px;
+  width: 25%;
   height: 346px;
-  position: absolute;
-  right: 20px;
+  position: relative;
+  float: right;
+  margin-right: 50px;
 }
 h1, h2 {
   font-weight: normal;
@@ -96,11 +97,11 @@ img{
 
 .content {
   float: left;
-  width: 1178px;
+  width: 95%;
   border: 1px solid #e8e8e8;
   background: #fff;
-  margin-top: 10px;
   padding-bottom: 31px;
+  margin:10px 50px;
 }
 
 .el-carousel__item h3 {
@@ -122,7 +123,7 @@ img{
 .rank {
   float: left;
   width: 300px;
-  border-bottom: 1px solid #ff7495;
+  border-bottom: 1px solid #2c70ff;
   border-bottom-left-radius: 4px;
   /*margin-top: 29px;*/
 }
@@ -134,7 +135,7 @@ img{
   border-radius: 4px;
   text-align: center;
   line-height: 32px;
-  background: #ff7495;
+  background: #72a9ff;
   font-size: 16px;
   color: #ffffff;
 }
